@@ -4,7 +4,7 @@
 	$triggersFile="triggers.php";
 	$updateFile="update.zip";
 	$updateSignatureFile="signature";
-	$updateURL = "https://127.0.0.1/fff/update/index.php";
+	$updateURL = "https://127.0.0.1/updatesrv/index.php";
 	$pubkeyPath = "public_key.pem";
 
 	if(isset($_GET['step'])){
