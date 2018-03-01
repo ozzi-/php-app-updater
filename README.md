@@ -1,5 +1,25 @@
 # php-app-updater
-This code provides a basic update framework for PHP apps.
+This code provides a basic incremental update framework for PHP apps.
+Updates consist of a collection of files which will be overwritten and the possibility to run PHP code once after installation.
+## Demo
+Version check
+
+![step 1](https://i.imgur.com/NJh90Hz.png)
+
+
+Update download & signature check
+
+![step 2](https://i.imgur.com/NF8BTi3.png)
+
+
+Update installation
+
+![step 3](https://i.imgur.com/dGnV27d.png)
+
+
+Version was updated and next update becomes available
+
+![step 4](https://i.imgur.com/h7xeCju.png)
 
 ## Client Calls
 ```
@@ -83,3 +103,7 @@ This folder will contain all update zip files.
 db.json contains all available updates and their signatures.
 The build ID's determine what ?operation=update will consider then next update.
 I recommend using steps of 10 for every version, this allows adding further in between at any time.
+
+## Security 
+Please do not use the provided demo public and private keys. Generate your own and keep the private key safe.
+Furthermore add a XSRF protection for the client code.
