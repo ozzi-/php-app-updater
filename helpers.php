@@ -1,4 +1,5 @@
  <?php
+	// Updates the version file to the next update available
 	function updateVersionFile(){
 		global $updateURL;
 		$version = getCurrentVersion();
@@ -10,7 +11,7 @@
 		  return file_put_contents("version",$ret[1]);
 		}
 	}
-
+	// parses the version file
 	function getCurrentVersion(){
 		$version=json_decode(file_get_contents('version'),true);
 		if($version===NULL){
@@ -19,7 +20,7 @@
 		}
 		return $version;
 	}
-
+	// checks for the next update for the current build ID 
 	function newVersionAvailable(){
 		global $updateURL;
 		$version = getCurrentVersion();
@@ -31,11 +32,12 @@
 		return false;
 	}
 
+	// downloads the next update and checks the signature
 	function downloadAndCheckUpdate($updateFile,$updateSignatureFile,$currentBuildID,$pubkeyPath){
 		global $updateURL;
 		$downloadURL = $updateURL."?operation=download&buildid=".$currentBuildID;
 
-		$retCode  = downloadFile($updateFile,$downloadURL);
+		$retCode = downloadFile($updateFile,$downloadURL);
 		if($retCode==200){
 			downloadFile($updateSignatureFile,$downloadURL."&signature");
 
@@ -43,7 +45,7 @@
 			$hash=(hash_file("sha512",$updateFile));
 			$signature=base64_decode(file_get_contents($updateSignatureFile));
 
-			openssl_public_decrypt ( $signature , $decrypted , $key);
+			openssl_public_decrypt ($signature , $decrypted , $key);
 			$decrypted = trim($decrypted);
 			return ($decrypted === $hash);
 		}else{
