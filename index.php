@@ -1,25 +1,3 @@
-<style>
-	.loader {
-		border: 16px solid <?= BRANDING_COLOR ?>;
-		border-top: 16px solid <?= BRANDING_WARNING_COLOR ?>;
-		border-radius: 50%;
-		width: 120px;
-		height: 120px;
-		animation: spin 2s linear infinite;
-	}
-	.centered {
-		position: fixed; 
-		top: 50%;
-		left: 50%;
-	}
-</style>
-<script>
-	function showSpinner(){
-	document.getElementById("spinnerbkp").style.display="block";
-	}
-</script>
-<div id="spinnerbkp" class="loader centered" style="display: none;"></div>
-
 <?php
     include_once("helpers.php");
 	
