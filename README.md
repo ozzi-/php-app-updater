@@ -82,28 +82,29 @@ Version was updated and next update becomes available
    +----------+                         +----------+
    ```
 # Setup 
+Initially, the following to steps have to be performed.
 1. Create key pair by running createKeyPair.sh
 2. Copy public_key.pem to the client root directory
 
 # Building an update
 1. Create a zip containing all files you wish to update(they will be overwritten, preserving folder structure contained in the zip)
-2. Optional: add a file called "triggers.php" which will be run once after overwriting the files
+2. Optional: add a file called "triggers.php" which will be executed once after overwriting the files
 3. Place the zip in the folder "repo"
 4. Run ./createSignature {zip name}
-5. Run updateDB.sh {buildid} {version} {filename} {releasenotes} {optional: write to file (any character will work)}
+5. Run updateDB.sh {buildid} {version} {filename} {releasenotes} {optional: any character - if set the db will be updated instead of only printing the result}
 
 # Further information
-## version
+## version file
 This file is used to store the current version of the client.
 
-## repo
+## /repo directory
 This folder will contain all update zip files.
 
-## db.json
+## db.json file
 db.json contains all available updates and their signatures.
 The build ID's determine what ?operation=update will consider then next update.
 I recommend using steps of 10 for every version, this allows adding further in between at any time.
 
-## Security 
+## Security Notice
 Please do not use the provided demo public and private keys. Generate your own and keep the private key safe.
 Furthermore add a XSRF protection for the client code.
