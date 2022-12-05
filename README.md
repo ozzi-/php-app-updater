@@ -105,6 +105,23 @@ db.json contains all available updates and their signatures.
 The build ID's determine what ?operation=update will consider then next update.
 I recommend using steps of 10 for every version, this allows adding further in between at any time.
 
+## updateDB.sh
+Please check the end of line characters used on your OS, you might want to change it accordingly in the sh file.
+
+## file permissions
+It is recommended to set the following permissions on your webserver for each file (owned by a dedicated - non root - user):
+createKeyPair.sh 400
+createSignature.sh 500
+db.json 644
+hash 600
+index.php 644
+private_key.pem 600
+public_key.pem 644
+signature 644
+updateDB.sh 400
+
+Thanks to https://github.com/smileBeda for pointing this out!
+
 ## Security Notice
 Please do not use the provided demo public and private keys. Generate your own and keep the private key safe.
 Furthermore add a XSRF protection for the client code.
